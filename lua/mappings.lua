@@ -35,4 +35,5 @@ map({ "n", "t" }, "<C-\\>", function()
 end, { desc = "floating terminal" })
 
 map('n', '<leader>lg', ':lua toggle_lazygit()<CR>', {desc = "Toggle lazygit"})
+map('n', '<leader>e', ':NvimTreeToggle<CR>', {desc = "Toggle nvim tree"})
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
