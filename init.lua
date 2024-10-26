@@ -24,7 +24,6 @@ require("lazy").setup({
 
   { import = "plugins" },
 }, lazy_config)
-
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
@@ -35,3 +34,14 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+-- Restore the cursor to the last known position when reopening a file
+vim.api.nvim_create_autocmd("BufReadPost", {
+    pattern = "*",
+    callback = function()
+        local last_position = vim.fn.line("'\"")
+        if last_position > 1 and last_position <= vim.fn.line("$") then
+            vim.api.nvim_win_set_cursor(0, {last_position, 0})
+        end
+    end,
+})
