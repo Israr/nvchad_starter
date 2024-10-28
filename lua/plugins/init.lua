@@ -33,6 +33,18 @@ return {
   end,
     lazy = false
   },
+  {
+    "smoka7/hop.nvim",
+    version = "*",
+    event = "BufRead",
+    opts = {
+        keys = 'etovxqpdygfblzhckisuran'
+    },
+    config = function()
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      require("mappings").hop()
+    end,
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {

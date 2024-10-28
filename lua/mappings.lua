@@ -44,6 +44,10 @@ lazy.copilot = function()
   end, { desc = "copilot Accept", replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true })
 end
 
+lazy.hop = function()
+  map("n", "<leader>j", "<cmd>HopWord<cr>", { desc = "Hop Word" })
+  map("n", "<leader>k", "<cmd>HopChar1<cr>", { desc = "Hop Char" })
+end
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 return lazy
