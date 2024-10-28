@@ -3,6 +3,7 @@ require "nvchad.mappings"
 -- add yours here
 
 local map = vim.keymap.set
+local lazy = {}
 
 -- Function to open LazyGit in a floating terminal
 function _G.toggle_lazygit()
@@ -36,4 +37,13 @@ end, { desc = "floating terminal" })
 
 map('n', '<leader>lg', ':lua toggle_lazygit()<CR>', {desc = "Toggle lazygit"})
 map('n', '<leader>e', ':NvimTreeToggle<CR>', {desc = "Toggle nvim tree"})
+
+lazy.copilot = function()
+  map("i", "<C-Space>", function()
+    vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
+  end, { desc = "copilot Accept", replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true })
+end
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+return lazy

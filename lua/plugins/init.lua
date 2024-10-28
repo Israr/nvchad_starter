@@ -12,7 +12,27 @@ return {
       require "configs.lspconfig"
     end,
   },
-
+  {
+    "github/copilot.vim",
+    lazy = false,
+    init = function()
+      -- vim.g.copilot_node_command = "/usr/local/bin/node"
+      -- Mapping tab is already used by NvChad
+      -- vim.g.copilot_no_tab_map = true
+      vim.g.copilot_assume_mapped = true
+      -- vim.g.copilot_tab_fallback = ""
+      -- The mapping is set to other key, see custom/lua/mappings
+      -- or run <leader>ch to see copilot mapping section
+    end,
+    config = function()
+      require("mappings").copilot()
+    end,
+  },
+  { "ethanholz/nvim-lastplace", config = function()
+    require 'nvim-lastplace'.setup {}
+  end,
+    lazy = false
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
@@ -23,3 +43,4 @@ return {
   -- 	},
   -- },
 }
+

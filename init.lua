@@ -35,13 +35,15 @@ vim.schedule(function()
   require "mappings"
 end)
 
+vim.o.relativenumber = true
+vim.o.number = true
 -- Restore the cursor to the last known position when reopening a file
-vim.api.nvim_create_autocmd("BufReadPost", {
-    pattern = "*",
-    callback = function()
-        local last_position = vim.fn.line("'\"")
-        if last_position > 1 and last_position <= vim.fn.line("$") then
-            vim.api.nvim_win_set_cursor(0, {last_position, 0})
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+--     pattern = "*",
+--     callback = function()
+--         local last_position = vim.fn.line("'\"")
+--         if last_position > 1 and last_position <= vim.fn.line("$") then
+--             vim.api.nvim_win_set_cursor(0, {last_position, 0})
+--         end
+--     end,
+-- })
