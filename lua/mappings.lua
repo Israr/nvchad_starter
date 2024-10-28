@@ -45,9 +45,12 @@ map('n', '<leader>gm', ':Telescope git_commits<CR>', {desc = "Telescope git_comm
 map('n', '<leader>T', ':lua TabMode()<CR>', {desc = "Toggle tab mode"})
 
 lazy.copilot = function()
-  map("i", "<C-Space>", function()
+  map("i", "<C-l>", function()
     vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
   end, { desc = "copilot Accept", replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true })
+  -- map("i", "<C-Space>", function()
+  --   vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
+  -- end, { desc = "copilot Accept", replace_keycodes = true, nowait = true, silent = true, expr = true, noremap = true })
 end
 
 lazy.hop = function()
