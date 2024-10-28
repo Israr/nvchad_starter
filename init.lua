@@ -10,7 +10,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-function TabMode()
+vim.api.nvim_create_user_command("TabMode", function()
   if vim.opt.expandtab._value == true then
     vim.opt.expandtab = false
     vim.opt.list = true
@@ -18,7 +18,20 @@ function TabMode()
     vim.opt.expandtab = true
     vim.opt.list = false
   end
-end
+end, { desc = "Toggle Tab mode" })
+
+vim.api.nvim_create_user_command("Indent4", function()
+  vim.bo.shiftwidth = 4
+  vim.bo.tabstop = 4
+  vim.bo.expandtab = true
+end, { desc = "Set indent width to 4 spaces" })
+
+vim.api.nvim_create_user_command("Indent2", function()
+  vim.bo.shiftwidth = 2
+  vim.bo.tabstop = 2
+  vim.bo.expandtab = true
+end, { desc = "Set indent width to 2 spaces" })
+
 
 local lazy_config = require "configs.lazy"
 
