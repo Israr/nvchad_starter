@@ -30,9 +30,9 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
-
   { import = "plugins" },
 }, lazy_config)
+
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")

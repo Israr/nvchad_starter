@@ -52,6 +52,14 @@ return {
       require("trim").setup({})
     end
   },
+  {
+    "machakann/vim-highlightedyank",
+    event = "TextYankPost",
+    config = function()
+      -- Configure vim-highlightedyank
+      vim.g.highlightedyank_highlight_duration = 100  -- duration in milliseconds
+    end,
+  }
 
 
   -- {
@@ -78,4 +86,3 @@ return {
   -- 	},
   -- },
 }
-
