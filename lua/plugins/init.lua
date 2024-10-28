@@ -45,6 +45,29 @@ return {
       require("mappings").hop()
     end,
   },
+  {
+    "cappyzawa/trim.nvim",
+    event = "BufWritePre",
+    config = function()
+      require("trim").setup({})
+    end
+  },
+
+
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("chatgpt").setup()
+  --   end,
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "folke/trouble.nvim", -- optional
+  --     "nvim-telescope/telescope.nvim"
+  --   }
+  -- },
+
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {

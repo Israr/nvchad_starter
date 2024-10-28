@@ -1,7 +1,6 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
-
--- bootstrap lazy and all plugins
+-- bootstrap lazy and all plugins.
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
@@ -10,6 +9,16 @@ if not vim.uv.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+
+function TabMode()
+  if vim.opt.expandtab._value == true then
+    vim.opt.expandtab = false
+    vim.opt.list = true
+  else
+    vim.opt.expandtab = true
+    vim.opt.list = false
+  end
+end
 
 local lazy_config = require "configs.lazy"
 
@@ -35,8 +44,6 @@ vim.schedule(function()
   require "mappings"
 end)
 
-vim.o.relativenumber = true
-vim.o.number = true
 -- Restore the cursor to the last known position when reopening a file
 -- vim.api.nvim_create_autocmd("BufReadPost", {
 --     pattern = "*",
