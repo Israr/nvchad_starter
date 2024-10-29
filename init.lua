@@ -10,6 +10,40 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+local autocmd = vim.api.nvim_create_autocmd
+
+-- allows quit all buffers without saving
+vim.api.nvim_create_user_command("Q", "qa<bang>", {
+  bang = true,
+})
+-- Open NvimTree on startup
+autocmd("VimEnter", {
+  -- pattern = "",
+  callback = function(data)
+    -- buffer is a directory
+    local directory = vim.fn.isdirectory(data.file) == 1
+
+    -- buffer is a [No Name]
+    local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+
+    if not directory and not no_name then
+      return
+    end
+
+    if directory then
+      -- change to the directory
+      vim.cmd.cd(data.file)
+    end
+
+    require("nvim-tree.api").tree.toggle { focus = false }
+
+    if no_name then
+      vim.cmd "Nvdash"
+    end
+  end,
+  desc = "Open NvimTree on startup",
+})
+
 vim.api.nvim_create_user_command("TabMode", function()
   if vim.opt.expandtab._value == true then
     vim.opt.expandtab = false
