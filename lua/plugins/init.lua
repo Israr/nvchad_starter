@@ -85,8 +85,10 @@ return {
         show_help = '<f1>',
       },
     },
-  }
-
+  },
+  { 'RRethy/vim-illuminate',
+    event = { "BufReadPre", "BufNewFile" },
+  },
 
   -- {
   --   "jackMort/ChatGPT.nvim",
