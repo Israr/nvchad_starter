@@ -28,9 +28,11 @@ return {
       require("mappings").copilot()
     end,
   },
-  { "ethanholz/nvim-lastplace", config = function()
-    require 'nvim-lastplace'.setup {}
-  end,
+  {
+    "ethanholz/nvim-lastplace",
+    config = function()
+      require 'nvim-lastplace'.setup {}
+    end,
     lazy = false
   },
   {
@@ -38,10 +40,10 @@ return {
     version = "*",
     event = "BufRead",
     opts = {
-        keys = 'etovxqpdygfblzhckisuran'
+      keys = 'etovxqpdygfblzhckisuran'
     },
     config = function()
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
       require("mappings").hop()
     end,
   },
@@ -57,7 +59,7 @@ return {
     event = "TextYankPost",
     config = function()
       -- Configure vim-highlightedyank
-      vim.g.highlightedyank_highlight_duration = 100  -- duration in milliseconds
+      vim.g.highlightedyank_highlight_duration = 100 -- duration in milliseconds
     end,
   },
   {
@@ -74,7 +76,7 @@ return {
         -- Open in the current working directory
         "<leader>cw",
         "<cmd>Yazi cwd<cr>",
-        desc = "Open the file manager in nvim's working directory" ,
+        desc = "Open the file manager in nvim's working directory",
       }
     },
     ---@type YaziConfig
@@ -86,7 +88,8 @@ return {
       },
     },
   },
-  { 'RRethy/vim-illuminate',
+  {
+    'RRethy/vim-illuminate',
     event = { "BufReadPre", "BufNewFile" },
   },
   {
@@ -104,14 +107,45 @@ return {
       indent = { enabled = true },
       input = { enabled = true },
       picker = { enabled = true },
-      notifier = { enabled = true },
+      notifier = {
+        enabled = true,
+        timeout = 3000,
+      },
       quickfile = { enabled = true },
       scope = { enabled = true },
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
+      styles = {
+        notification = {
+          -- wo = { wrap = true } -- Wrap notifications
+        }
+      }
     },
-  }
+    keys = {
+      -- Top Pickers & Explorer
+      { "<leader>ss",  function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
+      { "<leader>sb",  function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
+      { "<leader>s:",  function() Snacks.picker.command_history() end,                         desc = "Command History" },
+      { "<leader>se",  function() Snacks.explorer() end,                                       desc = "File Explorer" },
+      { "<leader>sfc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
+      { "<leader>sfg", function() Snacks.picker.git_files() end,                               desc = "Find Git Files" },
+      { "<leader>sff", function() Snacks.picker.files() end,                                   desc = "Find Files" },
+      { "<leader>sfp", function() Snacks.picker.projects() end,                                desc = "Projects" },
+      { "<leader>sfr", function() Snacks.picker.recent() end,                                  desc = "Recent" },
+
+      { "<leader>sl",  function() Snacks.picker.lines() end,                                   desc = "Buffer Lines" },
+      { "<leader>sB",  function() Snacks.picker.grep_buffers() end,                            desc = "Grep Open Buffers" },
+      { "<leader>sg",  function() Snacks.picker.grep() end,                                    desc = "Grep" },
+      { "<leader>sh",  function() Snacks.picker.help() end,                                    desc = "Help Pages" },
+      { "<leader>sp",  function() Snacks.picker.lazy() end,                                    desc = "Search for Plugin Spec" },
+      { "<leader>sq",  function() Snacks.picker.qflist() end,                                  desc = "Quickfix List" },
+    }
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    -- enabled = false,  -- This disables nvim-tree
+  },
 
   -- {
   --   "jackMort/ChatGPT.nvim",

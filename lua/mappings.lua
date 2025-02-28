@@ -6,6 +6,10 @@ local map = vim.keymap.set
 local lazy = {}
 
 -- Function to open LazyGit in a floating terminal
+function _G.snack_term()
+  Snacks.terminal()
+end
+
 function _G.toggle_lazygit()
   local buf = vim.api.nvim_create_buf(false, true)
   local width = vim.o.columns
@@ -35,8 +39,9 @@ map({ "n", "t" }, "<C-\\>", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm2", float_opts = {width=0.8, height=0.8, row=0.1, col=0.1}}
 end, { desc = "floating terminal" })
 
-map('n', '<leader>gg', '<cmd>lua toggle_lazygit()<CR>', {desc = "Toggle lazygit"})
-map('n', '<leader>e',  '<cmd>NvimTreeToggle<CR>', {desc = "Toggle nvim tree"})
+-- map('n', '<leader>gg', '<cmd>lua toggle_lazygit()<CR>', {desc = "Toggle lazygit"})
+map('n', '<leader>gg', '<cmd>lua Snacks.lazygit()<CR>', {desc = "Toggle lazygit"})
+-- map('n', '<leader>e',  '<cmd>NvimTreeToggle<CR>', {desc = "Toggle nvim tree"})
 map('n', '<leader>T',  '<cmd>TabMode<CR>', {desc = "Toggle tab mode"})
 map('n', '<leader>r',  '<cmd>e ~/Documents/roku/roku.sh<CR>', {desc = "Open roku.sh"})
 map('n', '<leader>c',  '<cmd>bd<CR>', {desc = "Close buffer"})

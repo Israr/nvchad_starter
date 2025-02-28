@@ -35,7 +35,7 @@ autocmd("VimEnter", {
       vim.cmd.cd(data.file)
     end
 
-    require("nvim-tree.api").tree.toggle { focus = false }
+    -- require("nvim-tree.api").tree.toggle { focus = false }
 
     if no_name then
       vim.cmd "Nvdash"
