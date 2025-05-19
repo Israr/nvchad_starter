@@ -144,7 +144,7 @@ return {
   },
   {
     "nvim-tree/nvim-tree.lua",
-    -- enabled = false,  -- This disables nvim-tree
+    enabled = true,  -- This disables nvim-tree
   },
 
   -- {
