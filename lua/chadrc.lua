@@ -16,12 +16,12 @@ M.base46 = {
 M.nvdash = {
   load_on_startup = false,
   buttons = {
-       { txt = "  Find File", keys = "ff", cmd = "Telescope find_files", no_gap = true },
-       { txt = "  Recent Files", keys = "fo", cmd = "Telescope oldfiles", no_gap = true },
-       { txt = "󰈭  Find Word", keys = "fw", cmd = "Telescope live_grep", no_gap = true},
-       { txt = "󱥚  Themes", keys = "th", cmd = ":lua require('nvchad.themes').open()", no_gap = true },
-       { txt = "  Mappings", keys = "ch", cmd = "NvCheatsheet" , no_gap = true},
-       { txt = "  Config", keys = "c", cmd = ":e ~/.config/nvim/init.lua", no_gap = true },
+       { txt = "  Find File", keys = "ff", cmd = "Telescope find_files", no_gap = false },
+       { txt = "  Recent Files", keys = "fo", cmd = "Telescope oldfiles", no_gap = false },
+       { txt = "󰈭  Find Word", keys = "fw", cmd = "Telescope live_grep", no_gap = false},
+       { txt = "󱥚  Themes", keys = "th", cmd = ":lua require('nvchad.themes').open()", no_gap = false },
+       { txt = "  Mappings", keys = "ch", cmd = "NvCheatsheet" , no_gap = false},
+       { txt = "  Config", keys = "c", cmd = ":e ~/.config/nvim/init.lua", no_gap = false },
        { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
        {
           txt = function()
