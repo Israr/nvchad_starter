@@ -6,7 +6,7 @@
 
 # Install
 ```
-git clone git@github.com:Israr/nvchad_starter ~/.config/nvim && nvim   
+git clone git@github.com:Israr/nvchad_starter ~/.config/nvim && nvim
 ```
 
 # Credits

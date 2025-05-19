@@ -41,7 +41,7 @@ end, { desc = "floating terminal" })
 
 -- map('n', '<leader>gg', '<cmd>lua toggle_lazygit()<CR>', {desc = "Toggle lazygit"})
 map('n', '<leader>gg', '<cmd>lua Snacks.lazygit()<CR>', {desc = "Toggle lazygit"})
-map('n', '<leader>e',  '<cmd>NvimTreeToggle<CR>', {desc = "Toggle nvim tree"})
+map('n', '<leader>e',  '<cmd>lua Snacks.explorer()<CR>', {desc = "Toggle nvim tree"})
 map('n', '<leader>T',  '<cmd>TabMode<CR>', {desc = "Toggle tab mode"})
 map('n', '<leader>r',  '<cmd>e ~/roku/roku.sh<CR>', {desc = "Open roku.sh"})
 map('n', '<leader>c',  '<cmd>bd<CR>', {desc = "Close buffer"})
