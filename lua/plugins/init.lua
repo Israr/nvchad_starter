@@ -146,7 +146,8 @@ return {
     "nvim-tree/nvim-tree.lua",
     enabled = false,  -- This disables nvim-tree
   },
-
+  -- testing blink auto completion
+  { import = "nvchad.blink.lazyspec" }
   -- {
   --   "jackMort/ChatGPT.nvim",
   --   event = "VeryLazy",
