@@ -10,6 +10,21 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+ -- if running inside ssh and kitty terminal, set clipboard.
+if vim.env.SSH_CONNECTION and vim.env.TERM == "xterm-kitty" then
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+      ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+  }
+end
+
 local autocmd = vim.api.nvim_create_autocmd
 
 -- allows quit all buffers without saving
