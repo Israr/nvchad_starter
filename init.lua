@@ -16,7 +16,6 @@ local autocmd = vim.api.nvim_create_autocmd
 vim.api.nvim_create_user_command("Q", "qa<bang>", {
   bang = true,
 })
--- Open NvimTree on startup
 autocmd("VimEnter", {
   -- pattern = "",
   callback = function(data)
