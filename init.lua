@@ -10,20 +10,43 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank()
+        local copy_to_unnamedplus = require('vim.ui.clipboard.osc52').copy('+')
+        copy_to_unnamedplus(vim.v.event.regcontents)
+        local copy_to_unnamed = require('vim.ui.clipboard.osc52').copy('*')
+        copy_to_unnamed(vim.v.event.regcontents)
+    end
+})
+
+-- vim.g.clipboard = {
+--   name = 'xsel',
+--   copy = {
+--     ['+'] = 'xsel --nodetach -i -b',
+--     ['*'] = 'xsel --nodetach -i -b',
+--   },
+--   paste = {
+--     ['+'] = 'xsel -o -b',
+--     ['*'] = 'xsel -o -b',
+--   },
+--   cache_enabled = 1,
+-- }
+
  -- if running inside ssh and kitty terminal, set clipboard.
-if vim.env.SSH_CONNECTION and vim.env.TERM == "xterm-kitty" then
-  vim.g.clipboard = {
-    name = 'OSC 52',
-    copy = {
-      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-    },
-    paste = {
-      ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-      ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-    },
-  }
-end
+-- if vim.env.SSH_CONNECTION and vim.env.TERM == "xterm-kitty" then
+--   vim.g.clipboard = {
+--     name = 'OSC 52',
+--     copy = {
+--       ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+--       ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+--     },
+--     paste = {
+--       ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+--       ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+--     },
+--   }
+-- end
 
 local autocmd = vim.api.nvim_create_autocmd
 
