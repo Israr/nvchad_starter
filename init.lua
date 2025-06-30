@@ -12,6 +12,10 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
+        if vim.loop.os_uname().sysname == "Darwin" then
+            -- Do nothing on macOS
+            return
+        end
         vim.highlight.on_yank()
         local copy_to_unnamedplus = require('vim.ui.clipboard.osc52').copy('+')
         copy_to_unnamedplus(vim.v.event.regcontents)
