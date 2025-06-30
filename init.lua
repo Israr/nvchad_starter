@@ -10,10 +10,12 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+local is_mac = vim.loop.os_uname().sysname == "Darwin"
+-- local is_linux = vim.loop.os_uname().sysname == "Linux"
+
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
-        if vim.loop.os_uname().sysname == "Darwin" then
-            -- Do nothing on macOS
+        if is_mac then
             return
         end
         vim.highlight.on_yank()
@@ -132,6 +134,9 @@ vim.schedule(function()
   require "mappings"
 end)
 
+function Printt(t)
+  print(vim.inspect(t))
+end
 -- Restore the cursor to the last known position when reopening a file
 -- vim.api.nvim_create_autocmd("BufReadPost", {
 --     pattern = "*",
