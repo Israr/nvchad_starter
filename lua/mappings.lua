@@ -50,6 +50,7 @@ map('n', '<leader>;',  '<cmd>Nvdash<CR>', {desc = "Open nvDash"})
 map('n', '<leader>gh', '<cmd>NvCheatsheet<CR>', {desc = "Open cheatsheet"})
 map('n', '<leader>gm', '<cmd>Telescope git_commits<CR>', {desc = "Telescope git_commits"})
 map('n', '<leader>ww', '<cmd>w<CR>', {desc = "savetab mode"})
+map('n', '<leader>cd', '<cmd>cd %:h<CR>', {desc = "CD to file dir"})
 
 lazy.copilot = function()
   map("i", "<C-l>", function()
