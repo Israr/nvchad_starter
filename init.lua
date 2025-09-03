@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end
 })
 
-# Disable OSC52 by default, enable it only when needed
+-- Disable OSC52 by default, enable it only when needed
 local termfeatures = vim.g.termfeatures or {}
 print(vim.inspect(termfeatures))
 termfeatures.osc52 = false
