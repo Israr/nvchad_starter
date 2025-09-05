@@ -62,6 +62,14 @@ vim.g.termfeatures = termfeatures
 
 local autocmd = vim.api.nvim_create_autocmd
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "codecompanion",
+  callback = function()
+    vim.b.cmp_enabled = false  -- blink respects this buffer variable
+    vim.b.copilot_enabled = false -- copilot respects this buffer variable
+  end,
+})
+
 -- allows quit all buffers without saving
 vim.api.nvim_create_user_command("Q", "qa<bang>", {
   bang = true,

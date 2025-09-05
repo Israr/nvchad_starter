@@ -29,6 +29,44 @@ return {
     end,
   },
   {
+    "olimorris/codecompanion.nvim",
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = "VeryLazy",
+    opts = {
+  --     strategies = {
+  --       --NOTE: Change the adapter as required
+  --       chat = { adapter = "copilot" },
+  --       inline = { adapter = "copilot" },
+  --     },
+  --     -- NOTE: The log_level is in `opts.opts`
+  --     opts = {
+  --       log_level = "DEBUG", -- or "TRACE"
+  --     },
+    },
+  },
+  {
+    "saghen/blink.cmp",
+    lazy = false,
+    version = "*",
+    opts = {
+      keymap = {
+        preset = "enter",
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<Tab>"] = { "select_next", "fallback" },
+      },
+      cmdline = { sources = { "cmdline" } },
+      sources = {
+        default = { "lsp", "path", "buffer", "codecompanion" },
+      },
+    },
+  },
+  -- Test with nvim-cmp
+  -- { "hrsh7th/nvim-cmp" },
+  {
     "ethanholz/nvim-lastplace",
     config = function()
       require 'nvim-lastplace'.setup {}
