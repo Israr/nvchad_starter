@@ -10,8 +10,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local is_mac = vim.loop.os_uname().sysname == "Darwin"
--- local is_linux = vim.loop.os_uname().sysname == "Linux"
+local is_mac = vim.uv.os_uname().sysname == "Darwin"
+-- local is_linux = vim.uv.os_uname().sysname == "Linux"
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
