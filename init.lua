@@ -123,6 +123,21 @@ vim.api.nvim_create_user_command("Indent2", function()
   vim.bo.expandtab = true
 end, { desc = "Set indent width to 2 spaces" })
 
+vim.api.nvim_create_user_command("TreeToggle", function()
+  local file = vim.api.nvim_buf_get_name(0)
+  local cwd = file ~= "" and vim.fs.dirname(file) or vim.fn.getcwd()
+  Snacks.explorer({ cwd = cwd })
+end, { desc = "Toggle file explorer in current file's directory" })
+
+vim.api.nvim_create_user_command('OpenCodeSetup', function()
+  require('opencode')
+end, { desc = 'Setup OpenCode LSP and terminal integration' })
+
+vim.api.nvim_create_user_command('RokuCodeSetup', function()
+  require('rokucode.lsp').setup()
+  require('rokucode.terminal').setup()
+-- require('rokucode.dap').setup()
+end, { desc = 'Setup RokuCode LSP and terminal integration' })
 
 local lazy_config = require "configs.lazy"
 
